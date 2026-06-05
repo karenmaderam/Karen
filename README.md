@@ -1,2 +1,0 @@
-# Karen
-Entrenamiento Deportivo
