@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karen Madera — Entrenamiento Deportivo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE6D6;
+    --beige: #D4C5A9;
+    --beige-mid: #B8A88A;
+    --gold: #C9A96E;
+    --gold-dark: #A07D45;
+    --charcoal: #1A1A1A;
+    --charcoal-mid: #2D2D2D;
+    --gray-dark: #3D3D3D;
+    --gray-mid: #6B6B6B;
+    --white: #FAFAF8;
+    --black: #0D0D0D;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: relative;
+    min-height: 100vh;
+    background-color: var(--charcoal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .header-texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 60px,
+        rgba(201,169,110,0.04) 60px,
+        rgba(201,169,110,0.04) 61px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(201,169,110,0.04) 60px,
+        rgba(201,169,110,0.04) 61px
+      );
+  }
+
+  .header-accent-left {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  .header-accent-right {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  .header-content {
+    position: relative;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .header-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+
+  .header-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.9;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .header-name em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2rem auto;
+  }
+
+  .header-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--beige);
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(0.7); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 6rem 2rem; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--gold-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.05;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold-dark); }
+
+  /* ─── ABOUT ─── */
+  .about-section { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-photo-wrapper {
+    position: relative;
+  }
+
+  .about-photo-frame {
+    position: relative;
+    aspect-ratio: 3/4;
+    background: var(--charcoal-mid);
+    overflow: hidden;
+  }
+
+  .about-photo-frame::before {
+    content: 'KM';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.3;
+  }
+
+  .about-photo-accent {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid var(--gold);
+    pointer-events: none;
+  }
+
+  .about-text p {
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--gray-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--beige);
+  }
+
+  .stat-item { text-align: center; }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-top: 0.4rem;
+    font-weight: 400;
+  }
+
+  /* ─── SERVICES ─── */
+  .services-section { background: var(--white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--beige);
+    border: 1.5px solid var(--beige);
+    margin-top: 4rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+
+  .service-card:hover { background: var(--cream); }
+
+  .service-card.featured {
+    background: var(--charcoal);
+    grid-column: span 1;
+  }
+
+  .service-card.featured:hover { background: var(--charcoal-mid); }
+
+  .service-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--cream-dark);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .service-card.featured .service-number { color: rgba(201,169,110,0.25); }
+
+  .service-card:not(.featured):hover .service-number { color: var(--beige); }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .service-card.featured .service-name { color: var(--white); }
+
+  .service-desc {
+    font-size: 0.78rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--gray-mid);
+    margin-bottom: 2rem;
+  }
+
+  .service-card.featured .service-desc { color: var(--beige); }
+
+  .service-price-wrap {
+    border-top: 1px solid var(--cream-dark);
+    padding-top: 1.5rem;
+    margin-top: auto;
+  }
+
+  .service-card.featured .service-price-wrap { border-color: rgba(255,255,255,0.1); }
+
+  .service-price-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--beige-mid);
+    margin-bottom: 0.3rem;
+  }
+
+  .service-card.featured .service-price-label { color: var(--gold); }
+
+  .service-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: var(--charcoal);
+  }
+
+  .service-card.featured .service-price { color: var(--gold); }
+
+  .service-period {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--gray-mid);
+    margin-left: 4px;
+  }
+
+  .service-card.featured .service-period { color: var(--beige); }
+
+  .service-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    font-weight: 500;
+  }
+
+  .service-includes {
+    list-style: none;
+    margin: 1rem 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .service-includes li {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--gray-mid);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .service-card.featured .service-includes li { color: var(--beige); }
+
+  .service-includes li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  /* ─── PRICING TABLE ─── */
+  .pricing-section { background: var(--charcoal); padding: 6rem 2rem; }
+
+  .pricing-section .section-title { color: var(--white); }
+  .pricing-section .section-label { color: var(--gold); }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3rem;
+  }
+
+  .pricing-table th {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--gold);
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(201,169,110,0.3);
+  }
+
+  .pricing-table td {
+    padding: 1.2rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--beige);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    vertical-align: middle;
+  }
+
+  .pricing-table tr:last-child td { border-bottom: none; }
+
+  .pricing-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+  .price-cell {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white) !important;
+  }
+
+  .table-name-cell {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--white) !important;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--beige-mid);
+    color: var(--beige-mid);
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    font-weight: 400;
+  }
+
+  .tag.gold {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: var(--cream);
+    text-align: center;
+    padding: 7rem 2rem;
+  }
+
+  .cta-section .section-title { margin-bottom: 1.5rem; }
+
+  .cta-sub {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--gray-mid);
+    letter-spacing: 0.1em;
+    margin-bottom: 3rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+
+  .cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--charcoal);
+    color: var(--white);
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.25s ease, color 0.25s ease;
+    border: 1px solid var(--charcoal);
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-dark);
+    border-color: var(--gold-dark);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--charcoal);
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid var(--charcoal);
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  .btn-outline:hover {
+    background: var(--charcoal);
+    color: var(--white);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-section { background: var(--charcoal); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-section .section-title { color: var(--white); }
+  .contact-section .section-label { color: var(--gold); }
+
+  .contact-intro {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--beige);
+    margin-top: 1.5rem;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(201,169,110,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+
+  .contact-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+  }
+
+  .contact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  .contact-value:hover { color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-copy {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    font-weight: 300;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.4s ease, padding 0.4s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(26,26,26,0.97);
+    padding: 0.85rem 2.5rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--beige);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-photo-wrapper { max-width: 320px; }
+    .about-stats { grid-template-columns: repeat(3, 1fr); }
+    .nav-links { display: none; }
+    .pricing-table th:nth-child(3),
+    .pricing-table td:nth-child(3) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <span class="nav-logo">Karen Madera</span>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div class="header-texture"></div>
+  <div class="header-accent-left"></div>
+  <div class="header-accent-right"></div>
+  <div class="header-content">
+    <p class="header-eyebrow">Entrenamiento Deportivo Personalizado</p>
+    <h1 class="header-name">Karen<br><em>Madera</em></h1>
+    <div class="header-divider"></div>
+    <p class="header-tagline">Transforma tu cuerpo · Fortalece tu mente · Supera tus límites</p>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Descubrir</span>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about-section" id="sobre-mi">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrapper reveal">
+        <div class="about-photo-frame"></div>
+        <div class="about-photo-accent"></div>
+      </div>
+      <div class="about-text">
+        <p class="section-label reveal">Sobre mí</p>
+        <h2 class="section-title reveal">Dedicada a tu<br><em>transformación</em></h2>
+        <p class="reveal reveal-delay-1">Soy Karen Madera, entrenadora deportiva certificada con pasión por ayudarte a alcanzar tus metas físicas y bienestar integral. Mi enfoque combina ciencia del ejercicio con motivación personalizada.</p>
+        <p class="reveal reveal-delay-2">Trabajo contigo para diseñar programas a tu medida, adaptados a tu nivel, objetivos y estilo de vida. Cada plan es único, igual que tú.</p>
+        <div class="about-stats reveal reveal-delay-3">
+          <div class="stat-item">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Años de experiencia</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Clientes transformados</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Compromiso total</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div class="container">
+    <p class="section-label reveal">Portafolio de servicios</p>
+    <h2 class="section-title reveal">Lo que ofrezco<br><em>para ti</em></h2>
+  </div>
+  <div class="container">
+    <div class="services-grid reveal">
+
+      <!-- Card 1 -->
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <h3 class="service-name">Entrenamiento Personal Presencial</h3>
+        <p class="service-desc">Sesiones individuales en gimnasio o espacio al aire libre, con seguimiento técnico detallado y corrección postural en tiempo real.</p>
+        <ul class="service-includes">
+          <li>Plan de entrenamiento personalizado</li>
+          <li>Corrección técnica y postural</li>
+          <li>Seguimiento de progreso semanal</li>
+          <li>Asesoría nutricional básica</li>
+        </ul>
+        <div class="service-price-wrap">
+          <div class="service-price-label">Sesión única</div>
+          <div class="service-price">$80.000 <span class="service-period">COP</span></div>
+        </div>
+      </div>
+
+      <!-- Card 2 Featured -->
+      <div class="service-card featured">
+        <div class="service-badge">Más popular</div>
+        <div class="service-number">02</div>
+        <h3 class="service-name">Plan Mensual Completo</h3>
+        <p class="service-desc">El paquete más elegido. Incluye 12 sesiones mensuales con acceso ilimitado a asesoría por WhatsApp y plan nutricional detallado.</p>
+        <ul class="service-includes">
+          <li>12 sesiones al mes (3 x semana)</li>
+          <li>Plan nutricional personalizado</li>
+          <li>Seguimiento diario por WhatsApp</li>
+          <li>Medidas y fotos comparativas</li>
+          <li>Rutinas complementarias en casa</li>
+        </ul>
+        <div class="service-price-wrap">
+          <div class="service-price-label">Por mes</div>
+          <div class="service-price">$650.000 <span class="service-period">COP</span></div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <h3 class="service-name">Entrenamiento Online</h3>
+        <p class="service-desc">Sesiones en vivo por videollamada, perfectas si prefieres entrenar desde casa sin perder la guía profesional y la motivación.</p>
+        <ul class="service-includes">
+          <li>Sesiones en vivo por videollamada</li>
+          <li>Rutinas adaptadas al hogar</li>
+          <li>Seguimiento por WhatsApp</li>
+          <li>Material de apoyo digital</li>
+        </ul>
+        <div class="service-price-wrap">
+          <div class="service-price-label">Sesión única</div>
+          <div class="service-price">$60.000 <span class="service-period">COP</span></div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <h3 class="service-name">Asesoría Nutricional</h3>
+        <p class="service-desc">Plan alimenticio diseñado según tus objetivos, estilo de vida y preferencias. Sin dietas extremas, con resultados reales y sostenibles.</p>
+        <ul class="service-includes">
+          <li>Valoración nutricional inicial</li>
+          <li>Plan alimenticio 4 semanas</li>
+          <li>Lista de compras incluida</li>
+          <li>Recetas y sustituciones</li>
+        </ul>
+        <div class="service-price-wrap">
+          <div class="service-price-label">Plan completo</div>
+          <div class="service-price">$180.000 <span class="service-period">COP</span></div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="service-card">
+        <div class="service-number">05</div>
+        <h3 class="service-name">Grupos Reducidos</h3>
+        <p class="service-desc">Entrenamientos en grupos de 3 a 5 personas. Una opción divertida y más accesible sin renunciar a la atención personalizada.</p>
+        <ul class="service-includes">
+          <li>Grupos de 3 a 5 personas</li>
+          <li>Horarios flexibles</li>
+          <li>Dinámica grupal motivadora</li>
+          <li>Plan compartido adaptado</li>
+        </ul>
+        <div class="service-price-wrap">
+          <div class="service-price-label">Por persona / sesión</div>
+          <div class="service-price">$45.000 <span class="service-period">COP</span></div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="service-card">
+        <div class="service-number">06</div>
+        <h3 class="service-name">Plan Transformación 3 Meses</h3>
+        <p class="service-desc">El programa más completo e intensivo. Diseñado para quienes buscan resultados profundos y sostenibles con un compromiso total.</p>
+        <ul class="service-includes">
+          <li>36 sesiones (12 por mes)</li>
+          <li>Nutrición + entrenamiento integrado</li>
+          <li>Valoraciones mensuales completas</li>
+          <li>Soporte prioritario ilimitado</li>
+          <li>Acceso a material exclusivo</li>
+        </ul>
+        <div class="service-price-wrap">
+          <div class="service-price-label">Plan 3 meses</div>
+          <div class="service-price">$1.700.000 <span class="service-period">COP</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TABLE -->
+<section class="pricing-section" id="precios">
+  <div class="container">
+    <p class="section-label">Tabla de precios</p>
+    <h2 class="section-title" style="color: var(--white);">Invierte en ti <em style="color: var(--gold);">misma</em></h2>
+
+    <table class="pricing-table reveal">
+      <thead>
+        <tr>
+          <th>Servicio</th>
+          <th>Modalidad</th>
+          <th>Duración</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="table-name-cell">Sesión Presencial Individual</td>
+          <td>Presencial</td>
+          <td>60 min</td>
+          <td class="price-cell">$80.000</td>
+        </tr>
+        <tr>
+          <td class="table-name-cell">Sesión Online Individual</td>
+          <td>Virtual</td>
+          <td>60 min</td>
+          <td class="price-cell">$60.000</td>
+        </tr>
+        <tr>
+          <td class="table-name-cell">Grupo Reducido <span class="tag">por persona</span></td>
+          <td>Presencial / Virtual</td>
+          <td>60 min</td>
+          <td class="price-cell">$45.000</td>
+        </tr>
+        <tr>
+          <td class="table-name-cell">Asesoría Nutricional</td>
+          <td>Virtual</td>
+          <td>4 semanas</td>
+          <td class="price-cell">$180.000</td>
+        </tr>
+        <tr>
+          <td class="table-name-cell">Plan Mensual Completo <span class="tag gold">Popular</span></td>
+          <td>Presencial</td>
+          <td>1 mes</td>
+          <td class="price-cell">$650.000</td>
+        </tr>
+        <tr>
+          <td class="table-name-cell">Plan Online Mensual</td>
+          <td>Virtual</td>
+          <td>1 mes</td>
+          <td class="price-cell">$480.000</td>
+        </tr>
+        <tr>
+          <td class="table-name-cell">Plan Transformación 3 Meses <span class="tag gold">Premium</span></td>
+          <td>Presencial</td>
+          <td>3 meses</td>
+          <td class="price-cell">$1.700.000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <p class="section-label reveal">¿Lista para empezar?</p>
+    <h2 class="section-title reveal">Tu mejor versión<br>comienza <em>hoy</em></h2>
+    <p class="cta-sub reveal">Agenda tu consulta inicial gratuita y descubre el plan perfecto para alcanzar tus metas. Sin compromisos, con toda la información que necesitas.</p>
+    <div class="cta-buttons reveal">
+      <a href="https://wa.me/573246196071" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:karenmaderam@gmail.com" class="btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Correo electrónico
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <p class="section-label">Contacto</p>
+        <h2 class="section-title">Hablemos <em style="color: var(--gold);">hoy</em></h2>
+        <p class="contact-intro">Estoy aquí para responder todas tus preguntas y ayudarte a dar el primer paso hacia tu transformación. No esperes más, el mejor momento es ahora.</p>
+      </div>
+      <div class="contact-items reveal">
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <a href="https://wa.me/573246196071" class="contact-value">324 619 6071</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <a href="https://instagram.com/karenmaderam_" class="contact-value">@karenmaderam_</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.78a4.85 4.85 0 01-1.01-.09z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">TikTok</div>
+            <a href="https://tiktok.com/@karenmaderam_" class="contact-value">@karenmaderam_</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Correo electrónico</div>
+            <a href="mailto:karenmaderam@gmail.com" class="contact-value">karenmaderam@gmail.com</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Karen Madera</div>
+  <p class="footer-copy">Entrenamiento Deportivo Personalizado · Colombia · 2025</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
